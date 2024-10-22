@@ -5,6 +5,26 @@ class ListNode:
 
 def detectCycle(head):
 #  write your code here
+    if not head:
+        return None
+
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next        
+        fast = fast.next.next   
+        if slow == fast:        
+            break
+    else:
+        return None 
+
+    slow = head  
+    while slow != fast:
+        slow = slow.next
+        fast = fast.next
+
+    return slow 
 
 # Driver code to test the cycle detection
 if __name__ == "__main__":
